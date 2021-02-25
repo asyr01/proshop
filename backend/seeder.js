@@ -1,4 +1,4 @@
-import mongoose, { connect } from 'mongoose';
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import users from './data/users.js';
@@ -49,6 +49,7 @@ const destroyData = async () => {
        console.log(`${error}`.red.inverse);
        process.exit(1);
     }
+}
 
 // process.argv represent what is in the console
 if(process.argv[2] === '-d'){
@@ -56,4 +57,3 @@ if(process.argv[2] === '-d'){
 } else {
     importData();
  }
-}
