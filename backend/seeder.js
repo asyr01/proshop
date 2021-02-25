@@ -34,3 +34,26 @@ const importData = async () => {
        process.exit(1);
     }
 }
+
+
+const destroyData = async () => {
+    try {
+      // to not import what is already in DB
+      await Order.deleteMany();
+      await Product.deleteMany();
+      await User.deleteMany();
+      
+      console.log('Data Destroyed!'.red.inverse);
+      process.exit();
+    } catch (error) {
+       console.log(`${error}`.red.inverse);
+       process.exit(1);
+    }
+
+// process.argv represent what is in the console
+if(process.argv[2] === '-d'){
+    destroyData();
+} else {
+    importData();
+ }
+}
