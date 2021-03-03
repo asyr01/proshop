@@ -28,6 +28,9 @@ const CartScreen = ({ match, location, history }) => {
     }
   }, [dispatch, productId, qty]);
 
+  const removeFromCartHandler = (id) => {
+    console.log('remove');
+  };
   return (
     <Row>
       <Col md={8}>
@@ -56,7 +59,7 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={2}>
                     <Form.Control
                       as='select'
-                      value={qty}
+                      value={item.qty}
                       onChange={(e) =>
                         dispatch(
                           addToCart(item.product, Number(e.target.value))
