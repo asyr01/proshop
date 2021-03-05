@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
 
-const protect = async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
   let token;
   if (
     req.headers.authorization &&
@@ -10,11 +11,18 @@ const protect = async (req, res, next) => {
     console.log('token found');
   }
 
+  try {
+    token = req.headers.authorization.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded);
+    next();
+  } catch (error) {
+    console.log(error);
+  }
   if (!token) {
     res.status(401);
     throw new Error('Not authorized no token');
   }
-  next();
-};
+});
 
 export { protect };
