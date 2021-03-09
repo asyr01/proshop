@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -32,7 +31,7 @@ const ProfileScreen = ({ location, history }) => {
         setEmail(user.email);
       }
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -76,7 +75,7 @@ const ProfileScreen = ({ location, history }) => {
             <Form.Label> Password</Form.Label>
             <Form.Control
               type='password'
-              placeholder='Enter password address'
+              placeholder='Enter password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
@@ -93,11 +92,13 @@ const ProfileScreen = ({ location, history }) => {
           </Form.Group>
 
           <Button type='submit' variant='primary'>
-            Register
+            Update User Details
           </Button>
         </Form>
       </Col>
-      <Col md={9}>My Orders</Col>
+      <Col md={9}>
+        <h2>My Orders</h2>
+      </Col>
     </Row>
   );
 };
