@@ -64,7 +64,7 @@ const LoginScreen = ({ location, history }) => {
       <Row className='py-3'>
         <Col>
           New to ProShop?{' '}
-          <Link to={redirect ? `/register?reditect=${redirect}` : '/register'}>
+          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
             Register
           </Link>
         </Col>

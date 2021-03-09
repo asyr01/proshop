@@ -20,7 +20,6 @@ const RegisterScreen = ({ location, history }) => {
   const { loading, error, userInfo } = userRegister;
 
   const redirect = location.search ? location.search.split('=')[1] : '/';
-  console.log(location.search);
 
   useEffect(() => {
     if (userInfo) {
@@ -92,7 +91,7 @@ const RegisterScreen = ({ location, history }) => {
       <Row className='py-3'>
         <Col>
           Have an Account?{' '}
-          <Link to={redirect ? `/register?reditect=${redirect}` : '/login'}>
+          <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
             Sign in
           </Link>
         </Col>
