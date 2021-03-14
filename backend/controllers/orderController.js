@@ -42,7 +42,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
 const getOrderById = asyncHandler(async (req, res) => {
   // Populate will automatically replace the specified path in the document, with document(s) from other collection(s).
-  const order = await (await Order.findById(req.params.id)).populate(
+  const order = await Order.findById(req.params.id).populate(
     'user',
     'name email'
   );
