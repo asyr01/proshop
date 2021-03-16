@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import {
-  Button,
   Row,
   Col,
   ListGroup,
@@ -15,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getOrderDetails, payOrder } from '../actions/orderActions';
-import { ORDER_PAY_FAIL, ORDER_PAY_RESET } from '../constants/orderConstants';
+import { ORDER_PAY_RESET } from '../constants/orderConstants';
 
 const OrderScreen = ({ match }) => {
   const orderId = match.params.id;
