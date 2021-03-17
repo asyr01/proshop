@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,10 @@ const UserListScreen = () => {
   useEffect(() => {
     dispatch(listUsers());
   }, [dispatch]);
+
+  const deleteHandler = (id) => {
+    console.log('delete');
+  };
 
   return (
     <>
@@ -38,10 +42,10 @@ const UserListScreen = () => {
             {users.map((user) => (
               <tr key={user._id}>
                 <td>{user._id}</td>
-                <td>{user._name}</td>
+                <td>{user.name}</td>
                 <td>
                   <a href={`mailto:${user.email}`}></a>
-                  {user._email}
+                  {user.email}
                 </td>
                 <td>
                   {user.isAdmin ? (
@@ -49,6 +53,20 @@ const UserListScreen = () => {
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }}></i>
                   )}
+                </td>
+                <td>
+                  <LinkContainer to={`/user/${user._id}/edit`}>
+                    <Button variant='light' className='btn-sm'>
+                      <i className='fas fa-edit'></i>
+                    </Button>
+                  </LinkContainer>
+                  <Button
+                    variant='danger'
+                    className='btn-sm'
+                    onClick={() => deleteHandler(user._id)}
+                  >
+                    <i className='fas fa-trash'></i>
+                  </Button>
                 </td>
               </tr>
             ))}
