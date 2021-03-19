@@ -130,6 +130,15 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc   Get user by ID.
+// @route  GET /api/users/:id
+// @access Private/Admin
+
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id).select('-password');
+  res.json(user);
+});
+
 export {
   authUser,
   registerUser,
@@ -137,4 +146,5 @@ export {
   updateUserProfile,
   getUsers,
   deleteUser,
+  getUserById,
 };
