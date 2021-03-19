@@ -16,9 +16,17 @@ const UserEditScreen = ({ match, history }) => {
   const dispatch = useDispatch();
 
   const userDetails = useSelector((state) => state.userDetails);
-  const { loading, error, userInfo } = userDetails;
+  const { loading, error, user } = userDetails;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!user.name || user._id !== userId) {
+      dispatch(getUserDetails(userId));
+    } else {
+      setName(user.name);
+      setEmail(user.email);
+      setIsAdmin(user.isAdmin);
+    }
+  }, [dispatch, userId, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -57,24 +65,13 @@ const UserEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='password'>
-              <Form.Label> Password</Form.Label>
-              <Form.Control
-                type='password'
-                placeholder='Enter password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId='confirmPassword'>
-              <Form.Label> Confirm Password</Form.Label>
-              <Form.Control
-                type='password'
-                placeholder='Confirm password'
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              ></Form.Control>
+            <Form.Group controlId='isadmin'>
+              <Form.Check
+                type='checkbox'
+                label='Is Admin'
+                checked={isAdmin}
+                onChange={(e) => setIsAdmin(e.target.checked)}
+              ></Form.Check>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
