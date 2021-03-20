@@ -39,10 +39,11 @@ const UserEditScreen = ({ match, history }) => {
         setIsAdmin(user.isAdmin);
       }
     }
-  }, [dispatch, userId, user, successUpdate]);
+  }, [dispatch, history, userId, user, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(updateUser({ _id: userId, name, email, isAdmin }));
   };
 
   return (
@@ -52,6 +53,8 @@ const UserEditScreen = ({ match, history }) => {
       </Link>
       <FormContainer>
         <h1>Edit User Details</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
