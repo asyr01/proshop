@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listProducts } from '../actions/productActions';
+import { listProducts, deleteProduct } from '../actions/productActions';
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const ProductListScreen = ({ history, match }) => {
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure ?')) {
-      // delete products
+      dispatch(deleteProduct(id));
     }
   };
 

@@ -9,6 +9,7 @@ import {
   PRODUCT_DELETE_SUCCESS,
   PRODUCT_DELETE_FAIL,
 } from '../constants/productConstants';
+import axios from 'axios';
 
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
