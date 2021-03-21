@@ -29,6 +29,10 @@ const ProductListScreen = ({ history, match }) => {
     }
   };
 
+  const createProductHandler = (product) => {
+    // Create product
+  };
+
   return (
     <>
       <Row className='align-items-center'>
@@ -37,11 +41,10 @@ const ProductListScreen = ({ history, match }) => {
         </Col>
         <Col className='text-right'>
           <Button className='my-3' onClick={createProductHandler}>
-            <i className='fas fa-plus'></i> Create Product
+            <i className='fas fa-plus'> </i> Create Product
           </Button>
         </Col>
       </Row>
-      <h1> Products </h1>
       {loading ? (
         <Loader />
       ) : error ? (
