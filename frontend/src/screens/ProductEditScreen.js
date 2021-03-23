@@ -11,6 +11,7 @@ const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
+  const [image, setImage] = useState(0);
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
