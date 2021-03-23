@@ -74,13 +74,33 @@ const ProductEditScreen = ({ match, history }) => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='isadmin'>
+            <Form.Group controlId='image'>
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter image url'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='brand'>
+              <Form.Label>Brand</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter brand'
+                value={brand}
+                onChange={(e) => setBrand(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='countInStock'>
+              <Form.Label>Count In Stock</Form.Label>
+              <Form.Control
+                type='number'
+                placeholder='Enter countInStock'
+                value={countInStock}
+                onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
