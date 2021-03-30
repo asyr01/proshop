@@ -7,6 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
+import Meta from '../components/Meta';
 import { listProducts } from '../actions/productActions';
 
 const HomeScreen = ({ match }) => {
@@ -25,18 +26,7 @@ const HomeScreen = ({ match }) => {
 
   return (
     <>
-      <Helmet>
-        <title> Welcome to Proshop</title>
-        <meta
-          name='description'
-          content='We sell the best products for cheap, and coolest e-commerce website ever'
-        />
-        <meta
-          name='keywords'
-          content='electronics, buy electronics, cheap electronics, cheap, quality'
-        />
-      </Helmet>
-      ;{!keyword && <ProductCarousel />}
+      <Meta />;{!keyword && <ProductCarousel />}
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
