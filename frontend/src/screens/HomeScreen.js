@@ -26,15 +26,15 @@ const HomeScreen = ({ match }) => {
   return (
     <>
       <Helmet>
-        <title> Welcome to Proshop | Home</title>
+        <title> Welcome to Proshop</title>
         <meta
           name='description'
           content='We sell the best products for cheap, and coolest e-commerce website ever'
-        ></meta>
+        />
         <meta
           name='keywords'
           content='electronics, buy electronics, cheap electronics, cheap, quality'
-        ></meta>
+        />
       </Helmet>
       ;{!keyword && <ProductCarousel />}
       <h1>Latest Products</h1>
